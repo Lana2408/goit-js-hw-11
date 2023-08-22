@@ -1,0 +1,62 @@
+header {
+    padding: 20px;
+    background-color: rgb(174, 211, 244);
+}
+
+
+
+.container {
+
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.img {
+    max-width: 100%;
+}
+
+.search-form {
+    justify-content: center;
+    margin: 0 auto;
+    display: flex;
+}
+input {
+    width: 450px;
+    padding: 8px;
+  } 
+
+  .photo-card {
+    border : 1px solid red;
+  }
+
+  .info {
+    padding: 15px;
+  }
+
+  .load-more {
+    margin: auto;
+    
+    width: 150px;
+    height: 50px;
+    
+    margin-bottom: 24px;
+
+    background-color: rgb(174, 211, 244);
+    font-size: 20px;
+    color: rgb(56, 53, 53);
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+
+}
