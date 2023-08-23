@@ -7,20 +7,33 @@ header {
 
 .container {
 
-    margin: 20px auto;
-    padding: 0 20px;
+
+
     display: flex;
-    justify-content: center;
+
 }
 
 .gallery {
+    margin: 20px auto;
+    padding: 0 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+
+}
+
+.photo-card {
+    flex-basis: calc((100% - 40px) / 4);
+    padding: 1px 10px 13px -3px rgba(80,129,194,0.92);
+    -moz-box-shadow: 1px 10px 13px -3px rgba(80,129,194,0.92);
+    box-shadow: 1px 10px 13px -3px rgba(80,129,194,0.92);
+
 }
 
 .img {
-    max-width: 100%;
+max-width: 100%;
+max-height: 220px;
+
 }
 
 .search-form {
@@ -33,22 +46,15 @@ input {
     padding: 8px;
   } 
 
-  .photo-card {
-    border : 1px solid red;
-  }
-
   .info {
     padding: 15px;
   }
 
   .load-more {
-    margin: auto;
-    
+
     width: 150px;
     height: 50px;
-    
-    margin-bottom: 24px;
-
+    margin: 15px auto;
     background-color: rgb(174, 211, 244);
     font-size: 20px;
     color: rgb(56, 53, 53);

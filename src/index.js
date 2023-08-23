@@ -10,13 +10,14 @@ let currentPage = 1;
 let value = '';
 let totalImages = 0;
 let isFirstLoad = true;
+let photoCaunter = 0;
 
 formEl.addEventListener('submit', onFormSubmit);
 loadMore.addEventListener('click', onLoad);
 
 function onLoad() {
     if (currentPage >= Math.ceil(totalImages / imagePerPage)) {
-        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+        Notiflix.Notify.warning("We're sorry, but you've reached the end of search results.");
         loadMore.hidden = true;
     } else {
         currentPage += 1;
@@ -31,6 +32,7 @@ function onFormSubmit(event) {
         return; 
     }
     galleryEl.innerHTML = '';
+    photoCaunter = 0;
     currentPage = 1;
     isFirstLoad = true;
     getImages(value, currentPage);
@@ -38,8 +40,10 @@ function onFormSubmit(event) {
 
 async function getImages(value, page = 1) { 
     try {
+
         const response = await fetchImages(value, page);
         totalImages = response.data.totalHits;
+        photoCaunter += response.data.hits.length;
        
   
         if (response.data.total === 0) {
@@ -52,18 +56,19 @@ async function getImages(value, page = 1) {
                 Notiflix.Notify.success(`Hooray! We found ${response.data.totalHits} images.`);
                 isFirstLoad = false;
             }
-
-            if (response.data.totalHits < imagePerPage) {
-                loadMore.hidden = true;
-            } else {
+            
+            if (photoCaunter < totalImages) {
                 loadMore.hidden = false;
+            } else {
+                loadMore.hidden = true;
             }
   
-            if (currentPage >= response.data.totalPages) {
-                loadMore.hidden = true;
-            } else {
-                loadMore.hidden = false;
-            }
+            //  if (currentPage >= response.data.totalPages && response.data.totalHits < imagePerPage) {
+            //       loadMore.hidden = true;
+            //   } else {
+            //       loadMore.hidden = false;
+            //   }
+             
         } else {
             Notiflix.Notify.failure("No images found.");
             loadMore.hidden = true;
